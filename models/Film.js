@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const filmSchema = new mongoose.schema({
+const filmSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -15,3 +15,7 @@ const filmSchema = new mongoose.schema({
         default: ''
     },
 })
+
+const Film = mongoose.model('Film', filmSchema);
+
+module.exports = Film;
