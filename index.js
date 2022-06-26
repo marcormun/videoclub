@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const db = require('./config/database');
-const userRoutes = require('.routes/user.routes');
+const userRoutes = require('./routes/user.routes');
 const filmRoutes = require('./routes/film.routes');
 const app = express();
 
