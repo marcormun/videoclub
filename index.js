@@ -1,8 +1,8 @@
 const express = require('express');
 require('dotenv').config();
 const db = require('./config/database');
-const userRoutes = require('./routes/user.routes');
-
+const userRoutes = require('.routes/user.routes');
+const filmRoutes = require('./routes/film.routes');
 const app = express();
 
 //middleware
@@ -14,6 +14,8 @@ const PORT = process.env.PORT || 4000;
 //routes
 
 app.use('/api', userRoutes);
+app.use('/api', filmRoutes);
+
 app.get('/', (req, res)=> {
     return res.send('Bienvenidos al videoclub');
 });
