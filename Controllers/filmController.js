@@ -22,4 +22,34 @@ filmController.getAll = async (req,res)=>{
     }
 }
 
+filmController.addFilm = async (req,res)=> {
+    try{
+        const {title,author,genre} = req.body;
+        if(!title || !author){
+            return res.status(400).json({
+                success: false,
+                message: 'title and author are required'
+            })
+        }
+        const newFilm = {
+            title,
+            author,
+            genre
+        }
+        await Film.create(newFilm);
+        return res.status(200).json(
+            {
+                success: true,
+                message: 'Create film succesfully'
+            }
+        )
+    }catch(error){
+        return res.status(500).json({
+            success: false,
+            message: 'Error r<dding film',
+            error: error.message
+        })
+    }
+}
+
 module.exports = filmController;
