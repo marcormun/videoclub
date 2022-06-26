@@ -6,22 +6,21 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
     returnDate:{
-        type: Date
+        type: Date,
+        default: null
+        
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
-        unique: true
+        required: true
     },
     filmId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Film',
-        required: true,
-        unique: true
+        required: true
     }
 })
 
 const Order = mongoose.model('Order', orderSchema);
-
 module.exports = Order;
