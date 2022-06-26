@@ -1,7 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { Console } = require("winston/lib/winston/transports");
 
 const authController = {};
 

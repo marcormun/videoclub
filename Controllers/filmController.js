@@ -51,10 +51,48 @@ filmController.addFilm = async (req,res)=> {
         })
     }
 }
+
 filmController.getFilmById = async(req,res)=>{
     try{
         const {id} = req.params;
         const film = await Film.findById(id);
+        if(!film){
+            return res.status(404).json(
+                {
+                    success: true,
+                    message: 'Film not found',
+                    data: []
+                }
+            );
+        };
+        return res.status(200).json({
+            success: true,
+            message: 'Film found',
+            data: film
+        });
+    }catch(error){
+        if(error?.message.includes('Cast to ObjectId failed')){
+            return res.status(404).json(
+                {
+                    success: true,
+                    message: 'Film not found',
+                    data: []
+                }
+            );
+        }
+        return res.status(500).json(
+            {
+                success: false,
+                message: 'Error finding film',
+                error: error.message
+            }
+        )
+    }
+}
+filmController.getFilmByTitle = async(req,res)=>{
+    try{
+        const {title} = req.body;
+        const film = await Film.findOne({title});
         if(!film){
             return res.status(404).json(
                 {
