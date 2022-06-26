@@ -24,8 +24,6 @@ userController.getAll = async (req, res) => {
     }
 };
 
-<<<<<<< HEAD
-=======
 userController.createUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
@@ -55,5 +53,4 @@ userController.createUser = async (req, res) => {
     }
 };
 
->>>>>>> 41a1b9417e1db245ebd4e1005220e04c54692170
 module.exports = userController;
