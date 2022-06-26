@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 4000;
 app.use('/api', userRouter);
 app.use('/api', filmRouter);
 app.use('/api', authRoutes);
-app.use('/api', orderRoutes)
+app.use('/api', orderRoutes);
 
 app.get('/', (req, res)=> {
     return res.send('Bienvenidos al videoclub');
