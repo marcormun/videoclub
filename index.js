@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const db = require('./config/database');
+const userRoutes = require('./user.routes');
 
 const app = express();
 
@@ -12,7 +13,7 @@ const PORT = process.env.PORT || 4000;
 
 //routes
 
-
+app.use('/api', userRoutes);
 app.get('/', (req, res)=> {
     return res.send('Bienvenidos al videoclub');
 });
