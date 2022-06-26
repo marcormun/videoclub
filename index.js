@@ -4,6 +4,7 @@ const db = require('./config/database');
 const userRouter = require('./routes/user.routes');
 const filmRouter = require('./routes/film.routes');
 const authRoutes = require('./routes/auth.routes');
+const orderRoutes = require('./routes/order.routes');
 const app = express();
 
 //middleware
@@ -17,6 +18,7 @@ const PORT = process.env.PORT || 4000;
 app.use('/api', userRouter);
 app.use('/api', filmRouter);
 app.use('/api', authRoutes);
+app.use('/api', orderRoutes)
 
 app.get('/', (req, res)=> {
     return res.send('Bienvenidos al videoclub');
