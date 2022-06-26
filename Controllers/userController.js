@@ -96,4 +96,73 @@ userController.getUserById = async (req, res) => {
     }
 };
 
+
+userController.update = async (req, res) => {
+    try {
+        const filter = {_id: req.params.id};
+        const user = await User.findByIdAndUpdate(req.params.id)
+        const update = {
+            name: req.body.name
+        };
+        await User.findOneAndUpdate(filter, update);
+        const userUpdated = await User.findOne(filter);
+       
+        if(!user) {
+            return res.status(404).json(
+                {
+                    success: true,
+                    message: "User not found",
+                    data: []
+                }
+            ); 
+        }
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: "User Update",
+                data: userUpdated
+            }
+        );
+    } catch (error) {
+        if(error?.message.includes('Cast to ObjectId failed')) {
+            return res.status(404).json(
+                {
+                    success: true,
+                    message: "User not found"
+                }
+            )
+        };
+
+        return res.status(500).json(
+            {
+                success: false,
+                message: "Error finding user",
+                error: error?.message || error
+            }
+        );   
+    }
+};
+
+userController.delete = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const userDeleted = await User.findByIdAndDelete(id);
+        return res.status(200).json({
+            success: true,
+            message: "Delete user sucessfully",
+            data: userDeleted
+        })
+
+    
+    } catch (error) {
+        return res.status(500).json(
+            {
+                success: false,
+                message: 'Error Deleted User',
+                data: error?.message ||error
+            }
+        )
+    }
+};
 module.exports = userController;
