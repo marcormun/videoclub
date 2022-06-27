@@ -7,7 +7,11 @@ const orderSchema = new mongoose.Schema({
     },
     returnDate:{
         type: Date,
-        default: null
+        required:true
+    },
+    returned:{
+        type: Boolean,
+        default: false
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,

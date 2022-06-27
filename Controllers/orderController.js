@@ -23,26 +23,27 @@ orderController.getAll = async (req, res) => {
 
 orderController.createOrder = async (req, res) => {
     try {
-        const {orderDate, userId, filmId } =req.body;
+        const {orderDate, returnDate, userId, filmId } =req.body;
         const newOrder ={
             orderDate,
+            returnDate,
             userId,
             filmId
         }
-        if(!orderDate || !userId || !filmId){
+        if(!orderDate || !returnDate || !userId || !filmId){
             return res.status(400).json({
                 success: false,
                 message: 'orderDate, userId and filmId are required'
             })
         }
         const orders = await Order.find();
-        const alreadyOrdered = orders.filter(order=>order.orderDate===null);
-        if(!alreadyOrdered){
+        const alreadyOrdered = orders.filter(order=>order.returned===false);
+        if(alreadyOrdered.length>0){
              return res.status(400).json(
                 {
                     success: true,
                     message: "User already ordered a film",
-                    data: []
+                    data: alreadyOrdered
                 }
             ); 
         }
