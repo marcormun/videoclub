@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const orderController = require('../controllers/orderController');
+const verifyToken = require('../middlewares/verifyToken');
 
-router.get('/orders',orderController.getAll);
-router.post('/orders', orderController.createOrder);
+router.get('/orders',verifyToken, orderController.getAll);
+router.post('/orders',verifyToken, orderController.createOrder);
 
 
 

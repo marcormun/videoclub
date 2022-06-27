@@ -23,7 +23,8 @@ orderController.getAll = async (req, res) => {
 
 orderController.createOrder = async (req, res) => {
     try {
-        const {orderDate, returnDate, userId, filmId } =req.body;
+        const userId = req.user_id;
+        const {orderDate, returnDate, filmId } =req.body;
         const newOrder ={
             orderDate,
             returnDate,
