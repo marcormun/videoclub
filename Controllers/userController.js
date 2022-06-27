@@ -2,6 +2,7 @@ const User = require("../models/User");
 
 const userController = {};
 
+/*
 userController.getAll = async (req, res) => {
     try {
         const users = await User.find();
@@ -22,7 +23,7 @@ userController.getAll = async (req, res) => {
             }
         )
     }
-};
+};*/
 
 userController.createUser = async (req, res) => {
     try {
