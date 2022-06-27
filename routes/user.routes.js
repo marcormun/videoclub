@@ -5,9 +5,9 @@ const verifyToken = require('../middlewares/verifyToken');
 
 
 router.get('/users', verifyToken, isAdmin, userController.getAll);
-router.get('/users/:id', userController.getUserById);
-router.put('/users/:id', userController.update);
-router.delete('/users/:id', userController.delete);
+router.get('/users/:id', verifyToken, userController.getUserById);
+router.put('/users/:id', verifyToken, userController.update);
+router.delete('/users/:id', verifyToken, userController.delete);
 
 
 module.exports = router;
