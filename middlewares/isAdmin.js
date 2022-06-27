@@ -16,7 +16,8 @@ const isAdmin = (req, res, next) => {
         return res.status(500).json(
             {
                 success: false,
-                message: "Dont have user permission"
+                message: "Dont have user permission",
+                error: error
             }
         );
     }
