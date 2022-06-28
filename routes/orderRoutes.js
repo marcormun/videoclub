@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const orderController = require('../Controllers/OrderController');
+const orderController = require('../controllers/OrderController');
 const isAdmin = require('../middlewares/isAdmin');
 const verifyToken = require('../middlewares/verifyToken');
 
-router.get('/orders', isAdmin, verifyToken, orderController.getAll);
+router.get('/orders', verifyToken, isAdmin, orderController.getAll);
 router.post('/orders',verifyToken, orderController.createOrder);
 
 

@@ -8,7 +8,7 @@ orderController.getAll = async (req, res) => {
 
         return res.status(200).json({
                 success: true,
-                message: 'Get all films retrieved succcesfully',
+                message: 'Get all orders retrieved succcesfully',
                 data: orders
         });
     } catch (error) {
