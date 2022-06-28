@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const orderController = require('../Controllers/OrderController');
+const orderController = require('../controllers/OrderController');
 const isAdmin = require('../middlewares/isAdmin');
 const verifyToken = require('../middlewares/verifyToken');
 
