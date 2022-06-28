@@ -1,11 +1,10 @@
 const express = require('express');
 require('dotenv').config();
 const db = require('./config/database');
-// const userRouter = require('./routes/user.routes');
-// const filmRouter = require('./routes/film.routes');
-// const authRoutes = require('./routes/auth.routes');
-// const orderRoutes = require('./routes/order.routes');
-const routes = require('./routes/routes');
+const userRoutes = require('./routes/userRoutes');
+const filmRoutes = require('./routes/filmRoutes');
+const authRoutes = require('./routes/authRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 const app = express();
 
 //middleware
@@ -24,11 +23,11 @@ app.use((req, res, next) => {
 const PORT = process.env.PORT || 4000;
 
 //routes
-app.use('/api', routes);
-// app.use('/api', userRouter);
-// app.use('/api', filmRouter);
-// app.use('/api', authRoutes);
-// app.use('/api', orderRoutes);
+
+app.use('/api', userRoutes);
+app.use('/api', filmRoutes);
+app.use('/api', authRoutes);
+app.use('/api', orderRoutes);
 
 app.get('/', (req, res)=> {
     return res.send('Bienvenidos al videoclub');

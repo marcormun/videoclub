@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const filmController = require('../controllers/filmController');
+const filmController = require('../controllers/FilmController');
 const isAdmin = require('../middlewares/isAdmin');
 const verifyToken = require('../middlewares/verifyToken');
 
