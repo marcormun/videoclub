@@ -20,7 +20,6 @@ const verifyToken = (req, res, next)=> {
                 message: 'Token invalid 2'
             })
         }
-        console.log(decoded);
         req.user_id = decoded.user_id;
         req.user_role = decoded.user_role;
         next();

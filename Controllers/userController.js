@@ -30,7 +30,7 @@ userController.getUserById = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const user = await User.findById(id).select(['-password','-__v']);;
+        const user = await User.findById(id).select(['-password','-__v']);
 
         if(!user) {
             return res.status(404).json(
@@ -94,7 +94,7 @@ userController.update = async (req, res) => {
             name: req.body.name
         };
         await User.findOneAndUpdate(filter, update);
-        const userUpdated = await User.findOne(filter);
+        const userUpdated = await User.findOne(filter).select(['-password','-__v']);
        
         if(!user) {
             return res.status(404).json(
@@ -105,7 +105,23 @@ userController.update = async (req, res) => {
                 }
             ); 
         }
-
+        if(req.user_role=='admin'){
+            return res.status(200).json(
+                {
+                    success: true,
+                    message: "User Update",
+                    data: userUpdated
+                }
+            );
+        }
+        if(req.user_id!==filter._id){
+            return res.status(404).json(
+                {
+                    success: true,
+                    message: "User not found"
+                }
+            );
+        }
         return res.status(200).json(
             {
                 success: true,
@@ -136,7 +152,9 @@ userController.update = async (req, res) => {
 userController.delete = async (req, res) => {
     try {
         const {id} = req.params;
-        const userDeleted = await User.findByIdAndDelete(id);
+        const userDeleted = await User.findByIdAndDelete(id).select(['-password','-__v']);
+        
+
         return res.status(200).json({
             success: true,
             message: "Delete user sucessfully",
