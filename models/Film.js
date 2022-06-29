@@ -14,6 +14,10 @@ const filmSchema = new mongoose.Schema({
         enum: ['terror','comedia','suspense','accion','ciencia ficcion','musical','not specified'],
         default: 'not specified'
     },
+    actors: {
+        type: Array,
+        required: true
+    }
 })
 
 const Film = mongoose.model('Film', filmSchema);

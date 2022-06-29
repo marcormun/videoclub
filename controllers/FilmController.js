@@ -24,8 +24,8 @@ filmController.getAll = async (req,res)=>{
 
 filmController.addFilm = async (req,res)=> {
     try{
-        const {title,author,genre} = req.body;
-        if(!title || !author){
+        const {title,author,genre,actors} = req.body;
+        if(!title || !author || !actors){
             return res.status(400).json({
                 success: false,
                 message: 'title and author are required'
@@ -34,7 +34,8 @@ filmController.addFilm = async (req,res)=> {
         const newFilm = {
             title,
             author,
-            genre
+            genre,
+            actors
         }
         await Film.create(newFilm);
         return res.status(200).json(
