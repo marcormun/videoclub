@@ -30,7 +30,7 @@ app.use('/api', authRoutes);
 app.use('/api', orderRoutes);
 
 app.get('/', (req, res)=> {
-    return res.send('Bienvenidos al videoclub');
+    return res.send('Bienvenidos a nuestro videoclub');
 });
 
 app.get('*',(req,res)=>{
