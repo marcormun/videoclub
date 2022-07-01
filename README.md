@@ -83,8 +83,8 @@ Films:
 - GET /api/films: Lista todas las películas.
 - POST /api/films: Añade una película (Admin).
 - GET /api/films/id/:id: Muestra una película por id.
-- GET /api/films/title/:title: Muestra una película por titulo.
-- GET /api/films/actor: Muestra las peliculas de un solo actor.
+- POST /api/films/title: Muestra una película por titulo.
+- POST /api/films/actor: Muestra las peliculas de un solo actor.
 
 Orders:
 
