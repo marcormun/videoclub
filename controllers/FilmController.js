@@ -93,7 +93,7 @@ filmController.getFilmById = async(req,res)=>{
 filmController.getFilmByTitle = async(req,res)=>{
     try{
         const title = req.body.title;
-        const film = await Film.findOne({title});
+        const film = await Film.find({title}).limit(10);
         console.log(film)
         if(!film){
             return res.status(200).json(
@@ -133,7 +133,7 @@ filmController.getFilmByActor = async (req,res) => {
     try {
         let {actors} = req.body;
               
-        const film = await Film.find({actors});
+        const film = await Film.find({actors}).limit(10);
    
 
         if(!actors || film.length === 0 || !film){
