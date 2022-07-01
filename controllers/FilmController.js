@@ -92,8 +92,9 @@ filmController.getFilmById = async(req,res)=>{
 }
 filmController.getFilmByTitle = async(req,res)=>{
     try{
-        const {title} = req.query.params;
-        const film = await Film.find({title});
+        const {title} = req.body;
+        const film = await Film.findOne({title});
+        console.log(film)
         if(!film){
             return res.status(404).json(
                 {
