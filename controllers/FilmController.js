@@ -92,7 +92,7 @@ filmController.getFilmById = async(req,res)=>{
 }
 filmController.getFilmByTitle = async(req,res)=>{
     try{
-        const {title} = req.body;
+        const {title} = req.query.params;
         const film = await Film.find({title});
         if(!film){
             return res.status(404).json(
@@ -123,6 +123,42 @@ filmController.getFilmByTitle = async(req,res)=>{
                 success: false,
                 message: 'Error finding film',
                 error: error.message
+            }
+        )
+    }
+}
+
+filmController.getFilmByActor = async (req,res) => {
+    try {
+        let {actors} = req.body;
+              
+        const film = await Film.find({actors});
+   
+
+        if(!actors || film.length === 0 || !film){
+            return res.status(404).json(
+                {
+                    success: false,
+                    message: "Actor NOT Found"
+                    
+                }
+            )
+        }
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: "Actor Found",
+                data: film
+            }
+        )
+
+    } catch (error) {
+        return res.status(500).json(
+            {
+                success: false,
+                message: "Error retrieving movie whith actor"
+                
             }
         )
     }
