@@ -11,6 +11,7 @@
 - [Usuarios](#usuarios)
 - [Peliculas](#peliculas)
 - [Pedidos](#pedidos)
+- [Endpoints](#endpoints)
 
 ## Tecnologías aplicadas
 
@@ -60,5 +61,35 @@ El usuario podrá realizar busqueda de todas las películas, o de una sola ya se
 Los usuarios solo pueden tener un alquiler al mismo tiempo, también se gestiona el poder añadir peliculas en caso de ser administrador.
 
 <img width="343" alt="image" src="https://user-images.githubusercontent.com/102702041/176485988-566abb59-51fa-4a41-8841-66432a1fe322.png">
+
+## Endpoints
+
+A continuación se muestran los endpoints disponibles a través del siguiente <a href="https://videoclub-proyecto5.herokuapp.com/">enlace</a>:
+
+Autenticación:
+
+- /api/auth/register: Registra un usuario.
+- /api/auth/login: Inicia sesión.
+
+Users:
+
+- GET /api/users: Lista todos los usuarios (Admin).
+- GET /api/users/:id: Muestra un usuario.
+- PUT /api/users/:id: Actualiza un usuario.
+- DELETE /api/users/:id: Elimina un usuario.
+
+Films:
+
+- GET /api/films: Lista todas las películas.
+- POST /api/films: Añade una película (Admin).
+- GET /api/films/id/:id: Muestra una película por id.
+- GET /api/films/title/:title: Muestra una película por titulo.
+- GET /api/films/actor: Muestra las peliculas de un solo actor.
+
+Orders:
+
+- GET /api/orders: Lista todos los pedidos (Admin).
+- POST /api/orders: Añade un pedido.
+
 
 - [Volver al principio](#backend-videoclub)
