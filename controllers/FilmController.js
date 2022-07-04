@@ -133,7 +133,7 @@ filmController.getFilmByActor = async (req,res) => {
     try {
         let {actors} = req.body;
               
-        const film = await Film.findOne({actors});
+        const film = await Film.find({actors});
    
 
         if(!actors || film.length === 0 || !film){
