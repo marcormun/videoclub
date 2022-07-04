@@ -37,7 +37,8 @@ orderController.createOrder = async (req, res) => {
                 message: 'orderDate, userId and filmId are required'
             })
         }
-        const alreadyOrdered = await Order.find().filter(order=>order.returned===false).filter(order=>order.userId===userId);
+        const orders = await Order.find().filter(order=>order.returned===false);
+        const alreadyOrdered = orders.filter(order=>order.returned===false).filter(order=>order.userId===userId);
         if(alreadyOrdered.length>0){
              return res.status(400).json(
                 {
