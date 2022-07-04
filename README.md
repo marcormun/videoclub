@@ -12,6 +12,7 @@
 - [Peliculas](#peliculas)
 - [Pedidos](#pedidos)
 - [Endpoints](#endpoints)
+- [Colaboradores](#colaboradores)
 
 ## Tecnologías aplicadas
 
@@ -90,6 +91,11 @@ Orders:
 
 - GET /api/orders: Lista todos los pedidos (Admin).
 - POST /api/orders: Añade un pedido.
+
+## Colaboradores
+
+<a href="https://github.com/marcormun">Marc Cordón</a><br/>
+<a href="https://github.com/shencanet">Santi Dionis</a>
 
 
 - [Volver al principio](#backend-videoclub)
