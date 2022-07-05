@@ -17,6 +17,20 @@ const filmSchema = new mongoose.Schema({
     actors: {
         type: Array,
         required: true
+    },
+    image: {
+        type: String,
+        required: true
+    },
+    rating: {
+        type: Number,
+        min: 1,
+        max: 10,
+        default: 5
+    },
+    description: {
+        type: String,
+        required: true
     }
 })
 
