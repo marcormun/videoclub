@@ -24,7 +24,7 @@ filmController.getAll = async (req,res)=>{
 
 filmController.addFilm = async (req,res)=> {
     try{
-        const {title,author,genre,actors,image,description} = req.body;
+        const {title,author,genre,actors,image,rating,description} = req.body;
         if(!title || !author || !actors || !image || !description){
             return res.status(400).json({
                 success: false,
