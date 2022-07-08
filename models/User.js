@@ -26,7 +26,7 @@ const UserSchema = new mongoose.Schema({
         enum: ['user', 'admin'],
         default: 'user'
     },
-    adress: {
+    address: {
         type: String,
         //minlength: 6,
         
