@@ -6,7 +6,7 @@ const authController = {};
 
 authController.register = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, phone, adress, surname } = req.body;
 
         // codificar password
         const salt = await bcrypt.genSalt(10);
@@ -27,7 +27,10 @@ authController.register = async (req, res) => {
         const newUser = {
             name,
             email,
-            password: encryptedPassword
+            password: encryptedPassword,
+            phone,
+            adress,
+            surname
         };
 
         await User.create(newUser);
